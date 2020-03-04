@@ -1,2 +1,16 @@
 @echo off
-start "Alguma coisa" cmd /K "C:\Users\%USERNAME%\AppData\Local\Continuum\anaconda3\Scripts\activate"
+start "Egg Wave" cmd /K "C:\Users\%USERNAME%\AppData\Local\Continuum\anaconda3\Scripts\activate"
+goto fim
+               .-~-.
+             .'     '.
+            /         \
+    .-~-.  :           ;
+  .'     '.|           |
+ /         \           :
+:           ; .-~""~-,/
+|           /`        `'.
+:          |             \
+ \         |             /
+  `.     .' \          .'
+    `~~~`    '-.____.-'
+fim:
