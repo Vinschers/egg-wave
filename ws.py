@@ -27,7 +27,7 @@ def sendData():
 
 @app.route("/getData", methods=['GET'])
 def getData():
-    ipv4 = request.remote_addr
+    ipv4 = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)   
 
     ret = {"ipv4": ipv4, "data": data[ipv4] if ipv4 in data else None}
 
