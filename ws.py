@@ -6,16 +6,32 @@ import pandas as pd
 
 app = Flask(__name__)
 
+data = {}
+
 @app.route("/")
 def index():
     return "<h1>EGG WAVE - FUNCIONANDO</h1>"
 
-@app.route("/sendData", methods=['GET', 'POST'])
+@app.route("/sendData", methods=['POST'])
 def sendData():
     info = request.data
     info = json.loads(info)
-    print(info)
+    ipv4 = request.remote_addr
+
+    if not ipv4 in data:
+        data[ipv4] = []
+
+    data[ipv4].append(info)
+
     return "200"
+
+@app.route("/getData", methods=['GET'])
+def getData():
+    ipv4 = request.remote_addr
+
+    ret = {"ipv4": ipv4, "data": data[ipv4] if ipv4 in data else None}
+
+    return json.dumps(ret)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
