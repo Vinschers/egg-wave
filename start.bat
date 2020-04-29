@@ -1,5 +1,5 @@
 @echo off
-start "Egg Wave" cmd /K "venv\Scripts\activate"
+start "Egg Wave venv" cmd /K "venv\Scripts\activate"
 goto fim
                .-~-.
              .'     '.
