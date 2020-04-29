@@ -100,8 +100,10 @@ print("Salvando dados\n\r")
 res = input("Salvar relatorio?(s/n) ")
 if res == "s":
 	f = open("Relatorio" + seed + ".txt", "w")
-	for i in range(0, len(tiposMl) - 1):
+	for i in range(0, len(tiposMl)):
 		f.write(tiposMl[i] + ": " + str(results[1 + i * 2]))
+
+	f.close()
 
 res = input("Quais modelos deseja salvar?\n\r(indices separados por espacos): ").split()
 if len(res) != 0:
