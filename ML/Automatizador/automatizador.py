@@ -7,9 +7,17 @@ import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
+from sklearn.model_selection import GridSearchCV 
 
-#tiposMl = ["ArvAle", "KNN", "SVM"]
-tiposMl = ["ArvAle"] #Nomes dos modelos sendo usados ATUALMENTE -> nao colocar nomes alem dos que realmente sao chamados
+import warnings
+warnings.filterwarnings("ignore")
+
+colunaResultado = 'label'
+
+tiposMl = ["ArvAle", "KNN", "SVM"] #Nomes dos modelos sendo usados ATUALMENTE -> nao colocar nomes alem dos que realmente sao chamados
 configs = [200, 5] #Configuracoes padrao -> 0 - Numeros de arvores de decisao; 1 - 'k' do knn
                                          
 
@@ -46,21 +54,49 @@ def florestaAleatoria():
 	results.append(dtree)
 
 	predict = dtree.predict(x_test)
+
 	arv_acc = acc()
 	results.append(arv_acc)
 	print("Floresta Aleatoria\t\t{}".format(arv_acc))
 
 def knn():
-	"""
-	Colocar codigo
-	"""
-	return
+	global predict
+	global x_train
+	global y_train
+	global results
+	global configs
+
+	scaler = StandardScaler()
+	scaler.fit(df[[colunaResultado]])
+	scaled_features = scaler.transform(df.drop('label',axis=1))
+	df.param = pd.DataFrame(scaled_features, columns=df.columns[:-1])
+
+	knn = KNeighborsClassifier(n_neighbors=configs[1])
+	knn.fit(x_train, y_train)
+	results.append(knn)
+	predict = knn.predict(x_test)
+
+	knn_acc = acc()
+	results.append(knn_acc)
+	print("KNN\t\t\t\t{}".format(knn_acc))
 
 def svm():
-	"""
-	Colocar codigo
-	"""
-	return	
+	global predict
+	global x_train
+	global y_train
+	global results
+	global configs
+
+	param_grid = {'C': [0.1,1, 10, 100, 1000], 'gamma': [1,0.1,0.01,0.001,0.0001], 'kernel': ['rbf']}
+	
+	grid = GridSearchCV(SVC(),param_grid,refit=True,verbose=3)
+	grid.fit(x_train,y_train)
+	results.append(grid)
+	predict = grid.predict(x_test)
+
+	grid_acc = acc()
+	results.append(grid_acc)
+	print("SVM\t\t\t\t{}".format(grid_acc))
 
 
 #---Main---#
@@ -78,7 +114,7 @@ if modo == "0":
 elif modo == "1":
 	df = pd.read_csv(path)
 
-x_train, x_test, y_train, y_test = train_test_split(df.drop('label',axis=1), df['label'], test_size=0.30)
+x_train, x_test, y_train, y_test = train_test_split(df.drop(colunaResultado,axis=1), df[colunaResultado], test_size=0.30)
 
 seed = str(random.randint(0, 1000000)) #codigo dos testes atuais
 
@@ -122,9 +158,10 @@ print("Salvando dados\n\r")
 
 res = input("Salvar relatorio?(s/n): ")
 if res == "s":
-	f = open("Relatorio" + seed + ".txt", "w")
+	f = open(seed + "Relatorio" + ".txt", "w")
 	for i in range(0, len(tiposMl)):
 		f.write(tiposMl[i] + ": " + str(results[1 + i * 2]))
+		f.write('\n')
 
 	f.close()
 
@@ -132,5 +169,5 @@ res = input("Quais modelos deseja salvar?\n\r(indices separados por espacos): ")
 if len(res) != 0:
 	for modelo in res:
 		i = int(modelo)
-		pickle.dump(results[i * 2], open(tiposMl[i] + seed + '.sat', 'wb'))
+		pickle.dump(results[i * 2], open(seed + tiposMl[i] + '.sat', 'wb'))
 print("------------------------------------------")
