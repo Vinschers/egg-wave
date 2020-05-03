@@ -9,7 +9,9 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
 
 #tiposMl = ["ArvAle", "KNN", "SVM"]
-tiposMl = ["ArvAle"]
+tiposMl = ["ArvAle"] #Nomes dos modelos sendo usados ATUALMENTE -> nao colocar nomes alem dos que realmente sao chamados
+configs = [200, 5] #Configuracoes padrao -> 0 - Numeros de arvores de decisao; 1 - 'k' do knn
+                                         
 
 df = None
 x_train = None
@@ -17,7 +19,7 @@ x_test = None
 y_train = None
 y_test = None
 predict = None
-results = []
+results = [] #Indices pares - modelos; indices impares - porcentagens de precisao
 
 def acc():
 	global predict
@@ -37,8 +39,9 @@ def florestaAleatoria():
 	global x_train
 	global y_train
 	global results
+	global configs
 
-	dtree = RandomForestClassifier(n_estimators = 200)
+	dtree = RandomForestClassifier(n_estimators = configs[0])
 	dtree.fit(x_train, y_train)
 	results.append(dtree)
 
@@ -79,6 +82,24 @@ x_train, x_test, y_train, y_test = train_test_split(df.drop('label',axis=1), df[
 
 seed = str(random.randint(0, 1000000)) #codigo dos testes atuais
 
+
+#Configuracoes
+print("\n\r\n\r")
+print("------------------------------------------")
+print("Configuracoes\n\r")
+
+if input("Deseja alterar configuracoes avancadas?(s/n): ") == "s":
+	res = input("Numero de arvores de decisao: ")
+	if res != "":
+		configs[0] = int(res)
+
+	res = input("Valor de k(KNN): ")
+	if res != "":
+		configs[1] = int(res)
+print("------------------------------------------")
+
+
+#Resultados
 print("\n\r\n\r")
 print("------------------------------------------")
 print("Resultados\n\r")
@@ -93,11 +114,13 @@ knn()
 svm()
 print("------------------------------------------")
 
+
+#Salvando
 print("\n\r\n\r")
 print("------------------------------------------")
 print("Salvando dados\n\r")
 
-res = input("Salvar relatorio?(s/n) ")
+res = input("Salvar relatorio?(s/n): ")
 if res == "s":
 	f = open("Relatorio" + seed + ".txt", "w")
 	for i in range(0, len(tiposMl)):
@@ -110,5 +133,4 @@ if len(res) != 0:
 	for modelo in res:
 		i = int(modelo)
 		pickle.dump(results[i * 2], open(tiposMl[i] + seed + '.sat', 'wb'))
-
 print("------------------------------------------")
