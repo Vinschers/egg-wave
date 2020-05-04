@@ -1,2 +1,16 @@
 @echo off
-start "Alguma coisa" cmd /K "F:\Anaconda\Scripts\activate"
+start "Egg Wave venv" cmd /K "venv\Scripts\activate"
+goto fim
+               .-~-.
+             .'     '.
+            /         \
+    .-~-.  :           ;
+  .'     '.|           |
+ /         \           :
+:           ; .-~""~-,/
+|           /`        `'.
+:          |             \
+ \         |             /
+  `.     .' \          .'
+    `~~~`    '-.____.-'
+fim:
