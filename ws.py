@@ -100,7 +100,7 @@ data = {}
 
 @app.route("/")
 def index():
-    return "<h1>EGG WAVE - FUNCIONANDO (Hackathon eddition v.5)</h1>"
+    return "<h1>EGG WAVE - FUNCIONANDO (Hackathon eddition v.6)</h1>"
 
 @app.route("/sendData", methods=['POST'])
 def sendData():
@@ -135,7 +135,8 @@ def submit():
     elder = request.form['elder']
     population = request.form['population']
 
-    return classify(density, icu, elder, population).to_json()
+    #return classify(density, icu, elder, population).to_json()
+    return jsonify(results=[density, icu, elder, population])
     
 @app.route('/country/<name>', methods=['GET'])
 @cross_origin()
