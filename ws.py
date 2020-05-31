@@ -3,15 +3,8 @@ from flask import Flask, jsonify, request, render_template, Response, send_file,
 import json
 import numpy as np
 import pandas as pd
-from flask_cros import CORS
 
 app = Flask(__name__)
-CORS(app)
-cors = CORS(app, resources={
-    r"/*":{
-        "origins":"*"
-    }
-})
 
 data = {}
 
