@@ -135,7 +135,7 @@ def submit():
     elder = request.args.get('elder')
     population = request.args.get('population')
 
-    return classify(density, icu, elder, population).to_json()
+    return jsonify(classify(density, icu, elder, population))
     
 @app.route('/country/<name>', methods=['GET'])
 @cross_origin()
