@@ -10,7 +10,7 @@ data = {}
 
 @app.route("/")
 def index():
-    return "<h1>EGG WAVE - FUNCIONANDO</h1>"
+    return "<h1>EGG WAVE - FUNCIONANDO (Hackathon eddition)</h1>"
 
 @app.route("/sendData", methods=['POST'])
 def sendData():
