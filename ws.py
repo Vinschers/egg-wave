@@ -127,16 +127,16 @@ def getData():
 
 
 
-@app.route("/submit", methods=['GET'])
+@app.route("/submit", methods=['POST'])
 @cross_origin()
 def submit():
-    density = request.form['density']
-    icu = request.form['icu']
-    elder = request.form['elder']
-    population = request.form['population']
+    #density = request.form['density']
+    #icu = request.form['icu']
+    #elder = request.form['elder']
+    #population = request.form['population']
 
     #return classify(density, icu, elder, population).to_json()
-    return jsonify(results=[density, icu, elder, population])
+    return "ola"
     
 @app.route('/country/<name>', methods=['GET'])
 @cross_origin()
