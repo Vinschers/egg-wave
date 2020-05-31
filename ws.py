@@ -100,7 +100,7 @@ data = {}
 
 @app.route("/")
 def index():
-    return "<h1>EGG WAVE - FUNCIONANDO (Hackathon eddition v.4)</h1>"
+    return "<h1>EGG WAVE - FUNCIONANDO (Hackathon eddition v.5)</h1>"
 
 @app.route("/sendData", methods=['POST'])
 def sendData():
@@ -127,7 +127,7 @@ def getData():
 
 
 
-@app.route("/submit", methods=['POST'])
+@app.route("/submit", methods=['GET'])
 @cross_origin()
 def submit():
     density = request.form['density']
@@ -135,7 +135,7 @@ def submit():
     elder = request.form['elder']
     population = request.form['population']
 
-    return classify(density, icu, elder, population).to_json(), 201, {"Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST", "Access-Control-Allow-Headers": "Content-Type"} # retorna json pro site 
+    return classify(density, icu, elder, population).to_json()
     
 @app.route('/country/<name>', methods=['GET'])
 @cross_origin()
