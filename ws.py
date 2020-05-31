@@ -7,7 +7,7 @@ from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 
-cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}}, support_credentials=True)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 from sklearn import preprocessing
@@ -100,7 +100,7 @@ data = {}
 
 @app.route("/")
 def index():
-    return "<h1>EGG WAVE - FUNCIONANDO (Hackathon eddition v.3)</h1>"
+    return "<h1>EGG WAVE - FUNCIONANDO (Hackathon eddition v.4)</h1>"
 
 @app.route("/sendData", methods=['POST'])
 def sendData():
@@ -135,7 +135,7 @@ def submit():
     elder = request.form['elder']
     population = request.form['population']
 
-    return classify(density, icu, elder, population).to_json() # retorna json pro site 
+    return classify(density, icu, elder, population).to_json(), 201, {"Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST", "Access-Control-Allow-Headers": "Content-Type"} # retorna json pro site 
     
 @app.route('/country/<name>', methods=['GET'])
 @cross_origin()
