@@ -100,7 +100,7 @@ data = {}
 
 @app.route("/")
 def index():
-    return "<h1>EGG WAVE - FUNCIONANDO (Hackathon eddition)</h1>"
+    return "<h1>EGG WAVE - FUNCIONANDO (Hackathon eddition v.3)</h1>"
 
 @app.route("/sendData", methods=['POST'])
 def sendData():
@@ -127,7 +127,7 @@ def getData():
 
 
 
-@application.route("/submit", methods=['POST'])
+@app.route("/submit", methods=['POST'])
 @cross_origin()
 def submit():
     density = request.form['density']
@@ -137,7 +137,7 @@ def submit():
 
     return classify(density, icu, elder, population).to_json() # retorna json pro site 
     
-@application.route('/country/<name>', methods=['GET'])
+@app.route('/country/<name>', methods=['GET'])
 @cross_origin()
 def country(name):
     df = pd.read_csv('final.csv')
