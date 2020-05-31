@@ -104,6 +104,7 @@ def index():
 
 @app.route("/sendData", methods=['POST'])
 def sendData():
+    print(info)
     info = request.data
     info = json.loads(info)
     ipv4 = request.remote_addr
