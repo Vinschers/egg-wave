@@ -39,7 +39,7 @@ def inialize():
     df.drop(df.columns[drop], axis=1, inplace=True)
 
     df_cases = df.iloc[:, 2]
-    df.drop('Cases_per_mil', axis=1, inplace=True)
+    df.drop('Deaths_per_mil', axis=1, inplace=True)
 
     cs = df.columns
 
@@ -48,7 +48,7 @@ def inialize():
     df = normalizer.transform(df)
     df = pd.DataFrame(df, columns = cs)
 
-    df['Cases_per_mil'] = df_cases
+    df['Deaths_per_mil'] = df_cases
 
     #Treinando
     lm = LinearRegression()
