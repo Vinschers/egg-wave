@@ -16,7 +16,7 @@ from sklearn.linear_model import LinearRegression
 #Vars de controle
 path = 'final.csv'
 #drop = [0, 1, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 30, 31]
-drop = [0, 4, 5, 6, 7, 8]
+drop = [0, 3, 4, 5, 6, 7]
 prever = [0, 1, -1] #Indices do novo DF!!
 
 #Vars globais
@@ -34,11 +34,11 @@ def inialize():
 
     #Lendo
     df = pd.read_csv(path)
-
+    
     #Arrumando colunas
     df.drop(df.columns[drop], axis=1, inplace=True)
 
-    df_cases = df.iloc[:, 2]
+    df_cases = df.iloc[:, 6]
     df.drop('Deaths_per_mil', axis=1, inplace=True)
 
     cs = df.columns
