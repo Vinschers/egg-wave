@@ -13,13 +13,13 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 from sklearn import preprocessing
 from sklearn.linear_model import LinearRegression
 
-#Vars de controle
+#Control variables
 path = 'final.csv'
 #drop = [0, 1, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 30, 31]
 drop = [0, 3, 4, 5, 6, 7]
-prever = [0, 1, -1] #Indices do novo DF!!
+prever = [0, 1, -1] #Indexes of the new dfs
 
-#Vars globais
+#Global variables
 normalizer = -1
 df = pd.DataFrame()
 lm = -1
@@ -32,10 +32,10 @@ def inialize():
     global drop
     global lm
 
-    #Lendo
+    #Reading
     df = pd.read_csv(path)
     
-    #Arrumando colunas
+    #Rearranging columns
     df.drop(df.columns[drop], axis=1, inplace=True)
 
     df_cases = df.iloc[:, 6]
@@ -43,14 +43,14 @@ def inialize():
 
     cs = df.columns
 
-    #Normalizando
+    #Normalization
     normalizer = preprocessing.Normalizer().fit(df)
     df = normalizer.transform(df)
     df = pd.DataFrame(df, columns = cs)
 
     df['Deaths_per_mil'] = df_cases
 
-    #Treinando
+    #Training
     lm = LinearRegression()
     lm.fit(df.iloc[2:, 2:-1], df.iloc[2:, 1])
 
