@@ -8,11 +8,26 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.model_selection import GridSearchCV
 
-colunasAPredizer = []
-colunasADroppar = []
+nomesCategorizadores = ["676613ArvAle.sat"]
 
 def categoriza(arq):
+    predicts = [] #onde sera guardado todos os resultados
+
     #Lendo
     df = pd.read_csv(arq)
 
-    return "Banana dancando"
+    #Categotizando as emocoes (temporario) - Floresta Aleatoria
+    categorizador = pickle.load(nomesCategorizadores[0])
+    predicts.append(categorizador.predict(df))
+
+    #Gerando relatorio
+    ret = {}
+    for predict in predicts:
+        for i in range(0, len(predict)):
+            if predict[i] in ret:
+                ret[predict[i]] += 1
+            else:
+                ret[predict[i]] = 1
+
+
+    return ret
