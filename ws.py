@@ -3,6 +3,7 @@ from flask import Flask, jsonify, request, render_template, Response, send_file,
 import json
 import numpy as np
 import pandas as pd
+from ML import categorizador
 
 app = Flask(__name__)
 
@@ -41,7 +42,7 @@ def getData():
 @app.route('/sendFile', methods=['POST'])
 def sendFile():
     file = request.files['file']
-    return 'arquivo recebido'
+    return categorizador.categoriza(file)
 
 
 if __name__ == "__main__":
