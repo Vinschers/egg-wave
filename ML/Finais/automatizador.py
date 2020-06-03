@@ -2,8 +2,6 @@ import random
 import pickle
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
@@ -15,7 +13,8 @@ from sklearn.model_selection import GridSearchCV
 import warnings
 warnings.filterwarnings("ignore")
 
-colunaResultado = 'label'
+colunasADroppar = [-1]
+colunaResultado = ''
 
 tiposMl = ["ArvAle", "KNN", "SVM"] #Nomes dos modelos sendo usados ATUALMENTE -> nao colocar nomes alem dos que realmente sao chamados
 configs = [200, 5] #Configuracoes padrao -> 0 - Numeros de arvores de decisao; 1 - 'k' do knn
@@ -114,10 +113,18 @@ if modo == "0":
 elif modo == "1":
 	df = pd.read_csv(path)
 
-x_train, x_test, y_train, y_test = train_test_split(df.drop(colunaResultado,axis=1), df[colunaResultado], test_size=0.30)
+x_train, x_test, y_train, y_test = train_test_split(df.drop(df.columns[colunasADroppar],axis=1), df[colunaResultado], test_size=0.30)
 
 seed = str(random.randint(0, 1000000)) #codigo dos testes atuais
 
+#Qual coluna usar
+print("\n\r\n\r")
+print("------------------------------------------")
+print("Coluna a predizer\n\r")
+
+colunaResultado = input("Nome da coluna a predizer: ")
+
+print("------------------------------------------")
 
 #Configuracoes
 print("\n\r\n\r")
@@ -133,7 +140,6 @@ if input("Deseja alterar configuracoes avancadas?(s/n): ") == "s":
 	if res != "":
 		configs[1] = int(res)
 print("------------------------------------------")
-
 
 #Resultados
 print("\n\r\n\r")
@@ -158,7 +164,7 @@ print("Salvando dados\n\r")
 
 res = input("Salvar relatorio?(s/n): ")
 if res == "s":
-	f = open(seed + "Relatorio" + ".txt", "w")
+	f = open(seed + colunaResultado + "Relatorio" + ".txt", "w")
 	for i in range(0, len(tiposMl)):
 		f.write(tiposMl[i] + ": " + str(results[1 + i * 2]))
 		f.write('\n')
@@ -169,5 +175,5 @@ res = input("Quais modelos deseja salvar?\n\r(indices separados por espacos): ")
 if len(res) != 0:
 	for modelo in res:
 		i = int(modelo)
-		pickle.dump(results[i * 2], open(seed + tiposMl[i] + '.sat', 'wb'))
+		pickle.dump(results[i * 2], open(seed + tiposMl[i] + colunaResultado + '.sat', 'wb'))
 print("------------------------------------------")
