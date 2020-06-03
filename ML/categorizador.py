@@ -8,7 +8,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.model_selection import GridSearchCV
 
-nomesCategorizadores = ["676613ArvAle.sat"]
+nomesCategorizadores = ["./ML/676613ArvAle.sat"]
 
 def categoriza(arq):
     predicts = [] #onde sera guardado todos os resultados
@@ -17,8 +17,9 @@ def categoriza(arq):
     df = pd.read_csv(arq)
 
     #Categotizando as emocoes (temporario) - Floresta Aleatoria
-    categorizador = pickle.load(nomesCategorizadores[0])
-    predicts.append(categorizador.predict(df))
+    with open(nomesCategorizadores[0], 'rb') as pickle_file:
+        categorizador = pickle.load(pickle_file)
+        predicts.append(categorizador.predict(df))
 
     #Gerando relatorio
     ret = {}
