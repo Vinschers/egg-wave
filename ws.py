@@ -42,7 +42,7 @@ def getData():
 @app.route('/sendFile', methods=['POST'])
 def sendFile():
     file = request.files['file']
-    return categorizador.categoriza(file)
+    return jsonify(categorizador.categoriza(file))
 
 
 if __name__ == "__main__":
