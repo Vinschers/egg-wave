@@ -1,0 +1,33 @@
+main {
+    min-height: calc(100vh - 56px);
+    width: 100%;
+    background-color: #121212;
+}
+footer {
+    width: 100%;
+    background-color: #1F1F1F;
+    color: white;
+}
+.navbar {
+    background-color: #1F1F1F;
+}
+#logo {
+    max-width: 50px;
+    max-height: 50px;
+}
+.navbar-brand {
+    position: relative;
+    top: 1px;
+}
+.txtRoxoPrimario {
+    color: #BB86FC !important;
+}
+.txtRoxoSecundario {
+    color: #3700B3 !important;
+}
+.txtCorSecundaria {
+    color: #03DAC6 !important;
+}
+.txtErro {
+    color: #CF6679 !important;
+}
