@@ -6,6 +6,7 @@ import pandas as pd
 from ML import categorizador
 
 app = Flask(__name__)
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 from Hackathon import hackathon
 hackathon.inialize()

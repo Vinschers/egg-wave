@@ -19,8 +19,16 @@ footer {
     position: relative;
     top: 1px;
 }
+.btnDisabled {
+    color: rgb(123, 123, 123) !important;
+    background-color: rgb(46, 46, 46) !important;
+    opacity: 1 !important;
+}
 .txtRoxoPrimario {
     color: #BB86FC !important;
+}
+.bgRoxoPrimario {
+    background-color: #BB86FC !important;
 }
 .txtRoxoSecundario {
     color: #3700B3 !important;
@@ -28,6 +36,27 @@ footer {
 .txtCorSecundaria {
     color: #03DAC6 !important;
 }
+.bgCorSecundaria {
+    background-color: #03DAC6 !important;
+}
 .txtErro {
     color: #CF6679 !important;
+}
+#uploadInput {
+    color: rgb(148, 148, 148);
+}
+#uploadInput::-webkit-file-upload-button {
+    color: black;
+    display: inline-block;
+    background: #BB86FC;
+    border: none;
+    padding: 7px 15px;
+    border-radius: 3px;
+    white-space: nowrap;
+    cursor: pointer;
+    border: none !important;
+    margin-bottom: 7px;
+  }
+#lblSelecione {
+    color: rgb(148, 148, 148);
 }
