@@ -11,7 +11,7 @@ from sklearn.model_selection import GridSearchCV
 nomesCategorizadores = ["./ML/676613ArvAle.sat"]
 
 def categoriza(arq):
-    predicts = -1 #onde sera guardado todos os resultados
+    predicts = [] #onde sera guardado todos os resultados
 
     #Lendo
     df = pd.read_csv(arq)
@@ -19,7 +19,7 @@ def categoriza(arq):
     #Categotizando as emocoes (temporario) - Floresta Aleatoria
     with open(nomesCategorizadores[0], 'rb') as pickle_file:
         categorizador = pickle.load(pickle_file)
-        predicts = categorizador.predict(df)
+        predicts.append(categorizador.predict(df))
 
     #Gerando relatorio
     ret = {}
