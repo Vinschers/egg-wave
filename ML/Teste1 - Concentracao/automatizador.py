@@ -113,10 +113,6 @@ if modo == "0":
 elif modo == "1":
 	df = pd.read_csv(path)
 
-x_train, x_test, y_train, y_test = train_test_split(df.drop(df.columns[colunasADroppar],axis=1), df[colunaResultado], test_size=0.30)
-
-seed = str(random.randint(0, 1000000)) #codigo dos testes atuais
-
 #Qual coluna usar
 print("\n\r\n\r")
 print("------------------------------------------")
@@ -125,6 +121,10 @@ print("Coluna a predizer\n\r")
 colunaResultado = input("Nome da coluna a predizer: ")
 
 print("------------------------------------------")
+
+x_train, x_test, y_train, y_test = train_test_split(df.drop(df.columns[colunasADroppar],axis=1), df[colunaResultado], test_size=0.30)
+
+seed = str(random.randint(0, 1000000)) #codigo dos testes atuais
 
 #Configuracoes
 print("\n\r\n\r")
@@ -153,7 +153,7 @@ florestaAleatoria()
 knn()
 
 #svm
-svm()
+#svm()
 print("------------------------------------------")
 
 
