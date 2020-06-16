@@ -2,13 +2,15 @@
 {% block linktestes %}active{% endblock %}
 {% block content %}
 <form id="upload-file" method="post" enctype="multipart/form-data">
-  <fieldset>
+  <div class="form-group">
+    <fieldset>
       <label for="file">Selecione o arquivo CSV</label>
-      <input name="file" type="file">
+      <input name="file" type="file" class="form-control">
   </fieldset>
   <fieldset>
-      <button id="upload-file-btn" type="button">Upload</button>
+      <button id="upload-file-btn" type="button" class="btn btn-primary">Upload</button>
   </fieldset>
+  </div>
 </form>
 
   <div style="width: 80vw; height: 50px; position: relative; left: 10vw;">
@@ -18,6 +20,22 @@
 
 <script>
 
+$(function() {
+    $('#upload-file-btn').click(function() {
+        var form_data = new FormData($('#upload-file')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/sendFile',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+                console.log(data);
+            },
+        });
+    });
+});
 dados = [0,1,1,0,-1,-1,0,1,1,0,-1,-1,0,1,1,0,-1,-1,0,1,1,0,-1,-1,0,1,1,0,-1,-1,0,1,1,0,-1,-1,0,1,1,0,-1,-1,0,1,1,0,-1,-1,0,1,1,0,-1,-1,0,1,1,0,-1,-1,0,1,1,0,-1,-1,0,1,1,0,-1,-1,0,1,1,0,-1,-1,0]
 labelsDados = []
 for (var i = 0; i < dados.length; i++)

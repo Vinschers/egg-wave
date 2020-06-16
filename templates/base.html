@@ -19,7 +19,7 @@
 
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
           <img src="{{ url_for('static', filename='img/egg.png') }}" id="logo" alt="">
           EggWave
         </a>
@@ -112,24 +112,6 @@
     </footer>
     <!-- Footer -->
 
-     <script>
-     $(function() {
-    $('#upload-file-btn').click(function() {
-        var form_data = new FormData($('#upload-file')[0]);
-        $.ajax({
-            type: 'POST',
-            url: 'http://localhost:5000/sendFile',
-            data: form_data,
-            contentType: false,
-            cache: false,
-            processData: false,
-            success: function(data) {
-                console.log(data);
-            },
-        });
-    });
-});
-     </script>
 
 
   </body>
