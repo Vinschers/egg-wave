@@ -25,11 +25,11 @@ def categoriza(arq):
     ret = {}
     for predict in predicts:
         for i in range(0, len(predict)):
-            if predict[i] in ret:
-                ret[predict[i]] += 1
+            if str(predict[i]) in ret:
+                ret[str(predict[i])] += 1
             else:
-                ret[predict[i]] = 1
+                ret[str(predict[i])] = 1
 
-    ret['Results'] = predicts
+    ret['results'] = predicts[0].astype('int32').tolist()
 
     return ret
