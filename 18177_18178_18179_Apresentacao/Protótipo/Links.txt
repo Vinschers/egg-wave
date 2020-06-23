@@ -1,0 +1,6 @@
+Repositório Github
+https://github.com/Vinschers/egg-wave
+
+Site do protótipo
+http://egg-wave.herokuapp.com/
+*Caso queiram testar a categorização, favor usar de banco de dados teste dessa pasta
