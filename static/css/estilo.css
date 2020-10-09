@@ -60,3 +60,24 @@ footer {
 #lblSelecione {
     color: rgb(148, 148, 148);
 }
+#painelFundo {
+    width: 100%;
+    height: calc(100vh - 56px);
+    background: url('/static/img/fundo.png'); 
+    background-position-x: center;
+    background-size: cover;
+}
+#titulo {
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 8vw;
+}
+#subtitulo {
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 3.5vw;
+}
+#btnAI {
+
+}
+#btnDatabase {
+
+}

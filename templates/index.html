@@ -1,5 +1,21 @@
 {% extends 'base.html' %}
 {% block linkhome %}active{% endblock %}
 {% block content %}
-<h1>Hello, world! Batata</h1>
+
+<div id="painelFundo">
+    <h1 id="titulo" class="text-center text-white">EggWave</h1>
+    <h2 id="subtitulo" class="text-center text-white">Tecnologias com Eletroencefalografia</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <img id="btnAI" src="{{ url_for('static', filename='img/ai.png') }}">
+            </div>
+            <div class="col">
+                <img id="btnDatabase" src="{{ url_for('static', filename='img/database.png') }}">
+            </div>
+        </div>
+    </div>
+</div>
+<h1>Conteudo dps</h1>
+
 {% endblock %}
