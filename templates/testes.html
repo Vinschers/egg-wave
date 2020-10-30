@@ -1,17 +1,57 @@
 {% extends 'base.html' %}
 {% block linktestes %}active{% endblock %}
 {% block content %}
-<form id="upload-file" method="post" enctype="multipart/form-data">
-  <div class="form-group">
-    <fieldset>
-      <label for="file" id="lblSelecione">Selecione o arquivo CSV</label>
-      <input name="file" type="file" accept=".csv" class="form-control-file" id="uploadInput">
-  </fieldset>
-  <fieldset>
-      <button disabled="disabled" id="upload-file-btn" type="button" class="btn btnDisabled">Upload</button>
-  </fieldset>
-  </div>
-</form>
+
+<div class="painelFundo" id="fundoTestes">
+  <form class="text-white" id="upload-file" method="post" enctype="multipart/form-data">
+    <h1 class="text-center">Envie seus próprios dados!</h1>
+    <div class="row my-3">
+      <div class="col-auto"><img class="imgIconForm" src="/static/img/database-notitle.png" alt="database"/></div>
+      <div class="col"><p class="meio">1 - Colete leituras de EEG. Se não tiver, pode pegar amostras gratuitas na seção <a href="/dados"><b>bancos de dados</b></a>.</p></div>
+    </div>
+    <div class="row my-3">
+      <div class="col-auto"><img class="imgIconForm" src="/static/img/gear.png" alt="gear"/></div>
+      <div class="col"><p class="meio">2 - Formate seus dados, conforme explicado na seção <a href="#formatacao"><b>formatação</b></a>.</p></div>
+    </div>
+    <div class="row my-4">
+      <div class="col-auto"><img class="imgIconForm" src="/static/img/csv.png" alt="csv"/></div>
+      <div class="col"><p class="meio">3 - Selecione o arquivo CSV</p></div>
+    </div>
+    <div class="form-group">
+      <fieldset>
+        <input name="file" type="file" accept=".csv" class="form-control-file " id="uploadInput">
+    </fieldset>
+    
+    <div class="row my-3">
+      <div class="col-auto"><img class="imgIconForm" src="/static/img/info.png" alt="info"/></div>
+      <div class="col"><p class="meio">4 - Detalhes técnicos:</p></div>
+    </div>
+
+    <div class="form-group">
+      <label for="txtSamplingRate">Sampling Rate</label>
+      <input type="text" class="form-control" id="txtSamplingRate" placeholder="Leituras por segundo (Hz). Exemplo: 128">
+    </div>
+
+    <div class="form-group">
+      <label for="txtSamplingRate">Divisão dos trechos</label>
+      <input type="text" class="form-control" id="txtSamplingRate" placeholder="">
+    </div>
+
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Eletrodos utilizados</label>
+      <select class="form-control" id="selectEletrodos">
+        <option value="5">5:  AF3, AF4, T7, T8, Pz</option>
+        <option value="16" selected>16 (Padrão): F3, F4, AF3, AF4, C5, C6, C3, C4, C1, C2, P3, P4, P5, P6, Fz, Cz</option>
+      </select>
+    </div>
+
+    <fieldset class="d-flex justify-content-center">
+        <button disabled="disabled" id="upload-file-btn" type="button" class="btn btnDisabled">Upload</button>
+    </fieldset>
+    </div>
+  </form>
+</div>
+
 
   <div style="text-align: center;">
     <h1 id="legenda" class="text-white" style="display: none; text-align: center;">Emoções por Tempo</h1>

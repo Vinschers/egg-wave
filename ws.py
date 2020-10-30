@@ -18,9 +18,13 @@ data = {}
 def index():
     return render_template('index.html')
 
-@app.route("/testes")
+@app.route("/ai")
 def testes():
     return render_template('testes.html')
+
+@app.route("/dados")
+def bancos():
+    return render_template('bancos.html')
     
 
 @app.route("/sendData", methods=['POST'])

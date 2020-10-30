@@ -2,20 +2,130 @@
 {% block linkhome %}active{% endblock %}
 {% block content %}
 
-<div id="painelFundo">
+<div class="painelFundo">
     <h1 id="titulo" class="text-center text-white">EggWave</h1>
     <h2 id="subtitulo" class="text-center text-white">Tecnologias com Eletroencefalografia</h2>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <img id="btnAI" src="{{ url_for('static', filename='img/ai.png') }}">
-            </div>
-            <div class="col">
-                <img id="btnDatabase" src="{{ url_for('static', filename='img/database.png') }}">
-            </div>
+    <div id="containerBotoes" class="d-flex justify-content-center">
+        <div id="containerAI">
+            <a href="/ai"><img id="btnAI" src="{{ url_for('static', filename='img/ai.png') }}"></a>
+        </div>
+        <div id="containerDatabase">
+            <a href="/dados"><img id="btnDatabase" src="{{ url_for('static', filename='img/database.png') }}"></a>
         </div>
     </div>
 </div>
-<h1>Conteudo dps</h1>
+<div id="containerAbaixo" class="text-white text-justify">
+    <div id="barraLateral" class="bg-white"></div>
+    <div class="container-fluid ctEscuro">
+        <h1>O que fazemos?</h1>
+        <p>Bem vindo ao EggWave! Nosso projeto é um site que providencia amostras de dados de eletroencefalografia (EEG) e ferramentas de inteligência artificial para analisar e tirar conclusões sobre ondas cerebrais. </p>        
+        <div>
+            <div id="imgObjetivos"></div>
+            
+            <h2>Envie dados de onde quiser, seja quem for!</h2>
+            <p>Nosso objetivo é permitir que qualquer um possa fazer seus testes e participar do desenvolvimento das neurociências. Por isso, nossa plataforma possibilita que qualquer pessoa envie dados gratuitamente e, desde que as colunas estejam no padrão explicado na seção <a href="/testes"><b>inteligências artificiais</b></a>, nossos modelos podem classificá-los pelo tipo de emoção ou até mesmo nível de concentração! </p>
+            <p>Nossos algoritmos alcançaram uma precisão média de xx% em testes, e você pode utilizá-los em nosso <i>Web Service</i> ou baixá-los para execução em sua própria máquina.</p>
+        
+            <h2>Obtenha amostras de dados de EEG!</h2>
+            <p>Sabemos o quão difícil é achar esse tipo de informação gratuitamente na internet. Por isso, na seção <a href="/bancos"><b>bancos de dados</b></a>, você tem acesso a 12 amostras diferentes de 6 voluntários para analisar como quiser. Todas elas estão classificadas em emoção positiva/negativa ou concentrado/relaxado dependendo do tipo de experimento, então sinta-se livre para treinar seus próprios modelos de inteligência artificial.</p>
+        </div>
+    </div>
+    <div class="container-fluid ctClaro">
+        <h1>De onde vêm nossos dados e modelos?</h1>
+        <p>Elaboramos dois experimentos, cada um com um propósito diferente: o primeiro estuda o funcionamento cerebral em diferentes níveis de concentração, e o segundo, diferentes tipos de emoção. 6 voluntários com a faixa etária entre 16 e 18 anos participaram dos testes descritos a seguir:</p>
+        <h2>Teste de concentração</h2>
+        <div id="containerConcentracao">
+            <div id="imgExperimentoConcentracao"></div>
+            
+            <p>Os voluntários passaram por um ciclo que se repetiu 3 vezes, em que: </p>
+            <ul>
+                <li>Por 4 minutos, ouviram músicas calmas para induzir <b>relaxamento</b>.</li>
+                <li>Tiveram 20 segundos de descanso.</li>
+                <li>Por 4 minutos, resolveram problemas matemáticos para indizir <b>concentração</b>.</li>
+                <li>Tiveram 20 segundos de descanso.</li>
+            </ul>
+            <p>Ao longo de todo o experimento, o eletroencefalógrafo mediu as ondas cerebrais, e posteriormente os dados foram classificados com 0 (relaxado) ou 1 (concentrado). Em seguida, treinamos um algoritmo de aprendizado supervisionado, Floresta Aleatória, utilizando dados de 5 voluntários. Por fim, testamos sua performance com os dados de um 6° voluntário, separando em trechos de 10 segundos.</p>
+            <p>É importante dizer que os modelos analisam registros individuais do EEG, mas decidimos testar a precisão da classificação mais provável em trechos completos de 10 segundos, pois em momentos específicos pequenas interferências ou variações naturais no cérebro podem atrapalhar os resultados.</p>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="true"><b>xx</b> (Corretamente concentrado)</td>
+                        <td class="false"><b>xx</b> (Inorretamente concentrado)</td>
+                    </tr>
+                    <tr>
+                        <td class="false"><b>xx</b> (Incorretamente relaxado)</td>
+                        <td class="true"><b>xx</b> (Corretamente relaxado)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Precisão: xx%</p>
+            <p >Para fazer os modelos, tanto deste quanto do próximo experimento, utilizamos a ferramenta Jupyter e a biblioteca SciKitLearn.</p>
+        </div>
+
+        <h2>Teste de emoções</h2>
+        <div id="containerEmocao">
+            <div id="imgExperimentoEmocao"></div>
+
+            <p>Desta vez, o ciclo se repetiu 8 vezes, nas quais: </p>
+            <ul id="listaEmocao">
+                <li>Um aviso de 5 segundos indicou o começo de um trecho.</li>
+                <li>Um trecho de filme foi exibido em até 4 minutos. Ele é escolhido cuidadosamente para induzir emoções <b>felizes</b> ou <b>tristes</b>, procedimento baseado em um estudo de <a href="batata">Wang et al</a>.</li>
+                <li>Tiveram 15 segundos de descanso.</li>
+            </ul>
+
+            <p>Um processamento parecido com o anterior foi feito neste. Emoções positivas receberam a classificação 1, negativas receberam 0. Novamente, os dados de 5 voluntários foram usados para treinar uma Floresta Aleatória, e um 6° para testá-la.</p>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="true"><b>xx</b> (Corretamente positivo)</td>
+                        <td class="false"><b>xx</b> (Inorretamente positivo)</td>
+                    </tr>
+                    <tr>
+                        <td class="false"><b>xx</b> (Incorretamente negativo)</td>
+                        <td class="true"><b>xx</b> (Corretamente negativo)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Precisão: xx%</p>
+        </div>
+        <div id="containerInformacoesAdicionais">
+            <h2>Onde você pode encontrar mais informações?</h2>
+            <p>Se estiver interessado em detalhes adicionais sobre os procedimentos desta pesquisa, disponibilizamos o link de nosso artigo: <br>
+                <a href="linkartigo">www.linkartigo.com.br</a>
+            </p>
+        </div>
+    </div>
+    
+    <div class="container-fluid ctEscuro">
+        <h1>Quem somos?</h1>
+        <p>Nosso projeto foi desenvolvido por três (ex)alunos do curso de informática no Colégio Técnico de Campinas (COTUCA), como um trabalho de conclusão de curso (TCC). Todos nós 
+            temos um fascínio pelas áreas de inteligência artificial e neurociências, e encontramos neste trabalho uma forma de unir as duas em prol de ajudar a comunidade científica e a
+            todos aqueles que, assim como nós, têm paixão por analisar dados e entender melhor o funcionamento do cérebro.
+        </p>
+        <div class="container-flex" id="containerFotos">
+            <div class="row justify-content-center">
+                <div class="col-lg text-center">
+                    <a class="linkedin" href="">
+                        <img class="foto" src="{{ url_for('static', filename='img/SchererTrue.png') }}">
+                        <h3 class="legendaFoto">Felipe Scherer Vicentin</h3>
+                    </a>
+                </div>
+                <div class="col-lg text-center">
+                    <a class="linkedin" href="https://www.linkedin.com/in/millergs03/">
+                        <img class="foto" src="{{ url_for('static', filename='img/miller.jpg') }}">
+                        <h3 class="legendaFoto">Gustavo Miller Santos</h3>
+                    </a>
+                </div>
+                <div class="col-lg text-center">
+                    <a class="linkedin" href="https://www.linkedin.com/in/pedro-ren%C3%B3-1b44431b4/" target="_blank">
+                        <img class="foto" src="{{ url_for('static', filename='img/reno.jpeg') }}">
+                        <h3 class="legendaFoto">Pedro H.M. Renó</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
 
 {% endblock %}
