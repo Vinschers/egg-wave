@@ -1,0 +1,30 @@
+#containerEmocoes, #containerConcentracao {
+    width: 95%;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    padding: 12px;
+    box-sizing: border-box;
+}
+.imgEmocoes {
+    background: url('/static/img/iconeEmocoes.png') no-repeat;
+    background-size: 100%;
+    width: 54px;
+    height: 54px;
+    margin-bottom: 10px;
+}
+.imgConcentracao {
+    background: url('/static/img/iconeConcentracao.png') no-repeat;
+    background-size: 100%;
+    width: 54px;
+    height: 54px;
+    margin-bottom: 10px;
+}
+.btnBaixar {
+    width: 80%;
+    position: relative;
+    left: 10%;
+}
+#titulo {
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 6vw;
+}

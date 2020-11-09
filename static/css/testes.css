@@ -1,0 +1,74 @@
+#upload-file {
+    background-color: #121212;
+    border-radius: 10px;
+    width: 600px;
+    max-width: 100vw;
+    position: relative;
+    left: 50%;
+    top: 15px;
+    transform: translate(-50%, 0);
+    padding: 15px;
+}
+.imgIconForm {
+    width: 50px;
+}
+#fundoTestes {
+    min-height: 865px !important;
+}
+#uploadInput {
+    color: rgb(148, 148, 148);
+}
+#uploadInput::-webkit-file-upload-button {
+    color: black;
+    display: inline-block;
+    background: #BB86FC;
+    border: none;
+    padding: 7px 15px;
+    border-radius: 3px;
+    white-space: nowrap;
+    cursor: pointer;
+    border: none !important;
+    margin-bottom: 7px;
+  }
+#lblSelecione {
+    color: rgb(148, 148, 148);
+}
+#wrapperEmocoes {
+    position: relative;
+    width: 80vw;
+    top: 10px;
+    left: 10vw;
+    height: 0;
+    display: none;
+    transition: height 1s;
+    margin: 10px 0;
+}
+#graficoEmocoes {
+    position: absolute;
+}
+#legendaGrafico {
+    display: none;
+    text-align: center;
+}
+#imgMapaEEG {
+    background: url('/static/img/eegmap.png') no-repeat;
+    background-size: 100%;
+    position: relative;
+    left: calc(-15px + 50%);
+    transform: translateX(-50%);
+    width: calc(32vw - 60px);
+    height: calc(0.989 * (32vw - 60px));
+    min-width: 400px;
+    min-height: 395px;
+}
+#imgGraficoAcuracia {
+    background: url('/static/img/grafico.png') no-repeat;
+    background-size: 100%;
+    position: relative;
+    left: calc(-15px + 50%);
+    transform: translateX(-50%);
+    width: calc(32vw - 60px);
+    height: calc(0.9043 * (32vw - 60px));
+    min-width: 400px;
+    min-height: 395px;
+}

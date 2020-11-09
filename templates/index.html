@@ -2,6 +2,8 @@
 {% block linkhome %}active{% endblock %}
 {% block content %}
 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"> 
+
 <div class="painelFundo">
     <h1 id="titulo" class="text-center text-white">EggWave</h1>
     <h2 id="subtitulo" class="text-center text-white">Tecnologias com Eletroencefalografia</h2>
@@ -30,7 +32,7 @@
             <p>Sabemos o quão difícil é achar esse tipo de informação gratuitamente na internet. Por isso, na seção <a href="/bancos"><b>bancos de dados</b></a>, você tem acesso a 12 amostras diferentes de 6 voluntários para analisar como quiser. Todas elas estão classificadas em emoção positiva/negativa ou concentrado/relaxado dependendo do tipo de experimento, então sinta-se livre para treinar seus próprios modelos de inteligência artificial.</p>
         </div>
     </div>
-    <div class="container-fluid ctClaro">
+    <div id="experimentosCt" class="container-fluid ctClaro">
         <h1>De onde vêm nossos dados e modelos?</h1>
         <p>Elaboramos dois experimentos, cada um com um propósito diferente: o primeiro estuda o funcionamento cerebral em diferentes níveis de concentração, e o segundo, diferentes tipos de emoção. 6 voluntários com a faixa etária entre 16 e 18 anos participaram dos testes descritos a seguir:</p>
         <h2>Teste de concentração</h2>

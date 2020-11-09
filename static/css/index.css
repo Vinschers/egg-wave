@@ -1,0 +1,120 @@
+#titulo {
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 8vw;
+}
+#subtitulo {
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 3.5vw;
+}
+#containerBotoes {
+    height: calc(100vh - 13.94vw - 1rem - 61px);
+    min-height: 250px;
+    position: relative;
+}
+#containerBotoes div {
+    width: 50vw;
+}
+#containerBotoes img {
+    height: 40vw;
+    min-height: 250px;
+    position: absolute;
+    max-height: 84%;
+    top: 50%;
+    transform: translate(0, -50%);
+    transition: .5s;
+    cursor: pointer;
+}
+#containerBotoes img:hover {
+    height: 45vw;
+    max-height: 94.5%;
+}
+#btnAI {
+    right: 52%;
+}
+#btnDatabase {
+    left: 52%;
+}
+#imgObjetivos {
+    background: url('/static/img/objetivos.png') no-repeat;
+    background-size: 100%;
+    width: calc(50vw - 60px);
+    height: calc(0.481 * (50vw - 60px));
+    float: left;
+}
+#imgExperimentoConcentracao {
+    background: url('/static/img/concentracao.png') no-repeat;
+    background-size: 100%;
+    width: calc(50vw - 60px);
+    height: calc(0.591 * (50vw - 60px));
+    float: right;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+#imgExperimentoEmocao {
+    background: url('/static/img/emocao.png') no-repeat;
+    background-size: 100%;
+    width: calc(50vw - 60px);
+    height: calc(0.624 * (50vw - 60px));
+    float: left;
+    margin: 10px 20px;
+}
+#containerEmocao {
+    clear: both;
+}
+.true {
+    color: chartreuse;
+}
+.false {
+    color: crimson;
+}
+table td {
+    border: 1px solid white;
+    padding: 6px;
+}
+table tr:first-child td {
+    border-top: 0;
+  }
+  table tr td:first-child {
+    border-left: 0;
+  }
+  table tr:last-child td {
+    border-bottom: 0;
+  }
+  table tr td:last-child {
+    border-right: 0;
+  }
+#listaEmocao {
+    margin-right: 20px;
+    position: relative;
+    left: 20px;
+}
+#containerInformacoesAdicionais {
+    clear: both;
+}
+.foto {
+    border-radius: 50%;
+    width: 75%;
+    margin-bottom: 15px;
+    transition: .5s;
+}
+.foto:hover {
+    width: 80%;
+}
+.linkedin {
+    color: white !important;
+    text-decoration: none !important;
+}
+.legendaFoto {
+    transition: .5s;
+}
+.legendaFoto:hover {
+    font-size: 2rem !important;
+}
+@media only screen and (max-width: 992px) {
+    .legendaFoto {
+        font-size: 6vw;
+    }
+    .legendaFoto:hover {
+        font-size: 6.85vw !important;
+    }
+  }

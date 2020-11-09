@@ -1,4 +1,82 @@
 {% extends 'base.html' %}
 {% block linkbancos %}active{% endblock %}
 {% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bancos.css') }}"> 
+
+<div class="painelFundo" id="painelBancos">
+    <h1 id="titulo" class="text-center text-white">Bancos de Dados</h1>
+    <div class="container-fluid text-white" id="containerBancos">
+        <div class="row">
+
+            <div class="col-lg">
+                <div class="bgEscuro container-fluid" id="containerEmocoes" >
+                    <div class="row">
+                        <div class="col-auto"><div class="imgEmocoes"></div></div>
+                        <div class="col text-center"><h1>Emoções</h1></div>
+                        <div class="col-auto"><div class="imgEmocoes"></div></div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <ul>
+                                <li>Obtido com experimento envolvendo trechos tristes ou felizes de filmes e documentários.</li>
+                                <li>Sampling rate: 256Hz</li>
+                                <li>
+                                    Arquivo CSV - Colunas
+                                    <ul>
+                                        <li>Eletrodos: F3, F4, AF3, AF4, C5, C6, C3, C4, C1, C2, P3, P4, P5, P6, Fz, Cz</li>
+                                        <li>Status:
+                                            <ul>
+                                                <li>0: Emoção negativa.</li>
+                                                <li>1: Emoção positiva.</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button type="button" class="btn btnBaixar bgRoxoPrimario">Baixar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg">
+                <div class="bgEscuro container-fluid" id="containerConcentracao"> 
+                    <div class="row">
+                        <div class="col-auto"><div class="imgConcentracao"></div></div>
+                        <div class="col text-center"><h1>Concentração</h1></div>
+                        <div class="col-auto"><div class="imgConcentracao"></div></div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <ul>
+                                <li>Obtido com experimento envolvendo músicas relaxantes e problemas matemáticos.</li>
+                                <li>Sampling rate: 256Hz</li>
+                                <li>
+                                    Arquivo CSV - Colunas
+                                    <ul>
+                                        <li>Eletrodos: F3, F4, AF3, AF4, C5, C6, C3, C4, C1, C2, P3, P4, P5, P6, Fz, Cz</li>
+                                        <li>Status:
+                                            <ul>
+                                                <li>0: Relaxado.</li>
+                                                <li>1: Concentrado.</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button type="button" class="btn btnBaixar bgRoxoPrimario">Baixar</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
 {% endblock %}

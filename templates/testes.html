@@ -2,184 +2,113 @@
 {% block linktestes %}active{% endblock %}
 {% block content %}
 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/testes.css') }}"> 
+
 <div class="painelFundo" id="fundoTestes">
-  <form class="text-white" id="upload-file" method="post" enctype="multipart/form-data">
-    <h1 class="text-center">Envie seus próprios dados!</h1>
-    <div class="row my-3">
-      <div class="col-auto"><img class="imgIconForm" src="/static/img/database-notitle.png" alt="database"/></div>
-      <div class="col"><p class="meio">1 - Colete leituras de EEG. Se não tiver, pode pegar amostras gratuitas na seção <a href="/dados"><b>bancos de dados</b></a>.</p></div>
-    </div>
-    <div class="row my-3">
-      <div class="col-auto"><img class="imgIconForm" src="/static/img/gear.png" alt="gear"/></div>
-      <div class="col"><p class="meio">2 - Formate seus dados, conforme explicado na seção <a href="#formatacao"><b>formatação</b></a>.</p></div>
-    </div>
-    <div class="row my-4">
-      <div class="col-auto"><img class="imgIconForm" src="/static/img/csv.png" alt="csv"/></div>
-      <div class="col"><p class="meio">3 - Selecione o arquivo CSV</p></div>
-    </div>
-    <div class="form-group">
-      <fieldset>
-        <input name="file" type="file" accept=".csv" class="form-control-file " id="uploadInput">
-    </fieldset>
-    
-    <div class="row my-3">
-      <div class="col-auto"><img class="imgIconForm" src="/static/img/info.png" alt="info"/></div>
-      <div class="col"><p class="meio">4 - Detalhes técnicos:</p></div>
-    </div>
+  	<form class="text-white" id="upload-file" method="post" enctype="multipart/form-data">
+		<h1 class="text-center">Envie seus próprios dados!</h1>
+		<div class="row my-3">
+			<div class="col-auto"><img class="imgIconForm" src="/static/img/database-notitle.png" alt="database"/></div>
+			<div class="col"><p class="meio">1 - Colete leituras de EEG. Se não tiver, pode pegar amostras gratuitas na seção <a href="/dados"><b>bancos de dados</b></a>.</p></div>
+		</div>
+		<div class="row my-3">
+			<div class="col-auto"><img class="imgIconForm" src="/static/img/gear.png" alt="gear"/></div>
+			<div class="col"><p class="meio">2 - Formate seus dados, conforme explicado na seção <a href="#formatacao"><b>formatação</b></a>.</p></div>
+		</div>
+		<div class="row my-4">
+			<div class="col-auto"><img class="imgIconForm" src="/static/img/csv.png" alt="csv"/></div>
+			<div class="col"><p class="meio">3 - Selecione o arquivo CSV</p></div>
+		</div>
+		<div class="form-group">
+			<fieldset>
+				<input name="file" type="file" accept=".csv" class="form-control-file " id="uploadInput">
+			</fieldset>
+			
+			<div class="row my-3">
+				<div class="col-auto"><img class="imgIconForm" src="/static/img/info.png" alt="info"/></div>
+				<div class="col"><p class="meio">4 - Detalhes técnicos:</p></div>
+			</div>
 
-    <div class="form-group">
-      <label for="txtSamplingRate">Sampling Rate</label>
-      <input type="text" class="form-control" id="txtSamplingRate" placeholder="Leituras por segundo (Hz). Exemplo: 128">
-    </div>
+			<div class="form-group">
+				<label for="txtSamplingRate">Sampling Rate</label>
+				<input type="text" class="form-control" id="txtSamplingRate" placeholder="Leituras por segundo (Hz). Exemplo: 128">
+			</div>
 
-    <div class="form-group">
-      <label for="txtSamplingRate">Divisão dos trechos</label>
-      <input type="text" class="form-control" id="txtSamplingRate" placeholder="">
-    </div>
+			<div class="form-group">
+				<label for="txtSamplingRate">Divisão dos trechos</label>
+				<input type="text" class="form-control" id="txtSamplingRate" placeholder="Tamanho em segundos de cada subdivisão de trechos. Recomendado: 2">
+			</div>
 
-    <div class="form-group">
-      <label for="exampleFormControlSelect1">Eletrodos utilizados</label>
-      <select class="form-control" id="selectEletrodos">
-        <option value="5">5:  AF3, AF4, T7, T8, Pz</option>
-        <option value="16" selected>16 (Padrão): F3, F4, AF3, AF4, C5, C6, C3, C4, C1, C2, P3, P4, P5, P6, Fz, Cz</option>
-      </select>
-    </div>
+			<div class="form-group">
+				<label for="selectEletrodos">Eletrodos utilizados</label>
+				<select class="form-control" id="selectEletrodos">
+					<option value="5">5:  AF3, AF4, T7, T8, Pz</option>
+					<option value="16" selected>16 (Padrão): F3, F4, AF3, AF4, C5, C6, C3, C4, C1, C2, P3, P4, P5, P6, Fz, Cz</option>
+				</select>
+			</div>
 
-    <fieldset class="d-flex justify-content-center">
-        <button disabled="disabled" id="upload-file-btn" type="button" class="btn btnDisabled">Upload</button>
-    </fieldset>
-    </div>
-  </form>
+			<div class="form-group form-check">
+				<input type="checkbox" class="form-check-input" id="chkEmocao">
+				<label class="form-check-label" for="exampleCheck1">Classificar emoção</label><br>
+				
+				<input type="checkbox" class="form-check-input" id="chkConcentracao">
+				<label class="form-check-label" for="exampleCheck1">Classificar nível de concentração</label>
+			</div>
+
+			<fieldset class="d-flex justify-content-center">
+				<button disabled="disabled" id="upload-file-btn" type="button" class="btn btnDisabled">Upload</button>
+			</fieldset>
+		</div>
+	</form>
+</div>
+
+<div id="containerAbaixo" class="text-white text-justify bgEscuro">
+	<div class="text-center">
+		<h1 id="legendaGrafico" class="text-white text-center">Emoções por Tempo</h1>
+	</div>
+	  
+	<div id="wrapperEmocoes" class="bgEscuro">
+		<canvas id="graficoEmocoes"></canvas>
+	</div>
+
+	<div id="barraLateral" class="bg-white"></div>
+	<div class="container-fluid ctClaro">
+		<h1 id="formatacao">Formatação</h1>
+		<p>Fizemos o possível para que qualquer um possa utilizar nosso modelo. No entanto, ele trabalha com uma formatação específica pra compreender os dados corretamente. Por favor, siga as especificações a seguir:</p>
+		<ul>
+			<li>
+				<p>Utilize o formato CSV.</p>
+			</li>
+			<li>
+				<p>As colunas devem estar em uma ordem específica, e cada uma representa um eletrodo diferente. Nosso modelo aceita duas combinações, com os eletrodos nesta ordem:</p>
+				<ol>
+					<li><p>AF3, AF4, T7, T8, Pz.</p></li>
+					<li><p>F3, F4, AF3, AF4, C5, C6, C3, C4, C1, C2, P3, P4, P5, P6, Fz, Cz.</p></li>
+				</ol>	
+				<div id="imgMapaEEG"></div>
+				<p class="text-center"><i>Mapa de eletrodos de EEG</i></p>
+			</li>
+			<li>
+				Cada linha representa um registro do EEG, que acontece a cada (1/Sampling rate) de segundo.
+			</li>
+			<li>
+				<p>Sabemos que, às vezes, o objetivo é fazer previsões com amostras já etiquetadas, para propósito de teste. Por isso, não há problema em colocar colunas adicionais, como classificações, desde que todas as de eletrodos já tenham vindo, em ordem.</p>
+			</li>
+		</ul>
+	</div>
+	<div class="container-fluid ctEscuro">
+		<h1 id="detalhesTecnicos">Detalhes Técnicos</h1>
+		<p>Como os modelos realmente funcionam, afinal de contas?</p>
+		<p>Nossos modelos utilizam o método de Floresta Aleatória, que consiste basicamente em várias árvores de decisão, as quais classificam dados ao ramificarem seus nós. Elas foram treinadas com dados do <a href="/#experimentosCt"><b>experimento descrito na página inicial</b></a>.</p>
+		<p>A questão é a seguinte: em um único registro há uma infinidade de fatores que atrapalham a análise, desde variações normais no cérebro até movimentos físicos ou ruídos por falhas no aparelho. Por isso, a precisão individual deles é de pouco mais de 55% em nossos testes. Entretanto, ao analisar um trecho inteiro, essa leve tendência a acertar a classificação se potencializa, reduzindo os ruídos. Por isso, em nossas análises não testamos pontos individuais, mas trechos de leitura do EEG. Quanto maior o trecho, menos ruído e consequentemente maior precisão. Veja nossos resultados de acurácia por tamanho de trecho:</p>
+		<div id="imgGraficoAcuracia"></div>
+		<p>Para fazer essa divisão, é necessário especificar o <i>sampling rate</i> (leituras por segundo) do EEG e o tamanho dos trechos. Recomenda-se, para casos gerais, 2 segundos. Se o aparelho tiver muito ruído, 4 segundos.</p>
+		<p>Na realidade, temos dois modelos: um que classifica emoções em felizes ou tristes, e outro o nível de concentração em alto ou baixo. Esse gráfico se refere à classificação de níveis de concentração, mas se aplica de forma parecida ao outro modelo.</p>
+		<p>Você pode escolher qual(quais) modelo(s) usar marcando a caixa correspondente.</p>
+	</div>
 </div>
 
 
-  <div style="text-align: center;">
-    <h1 id="legenda" class="text-white" style="display: none; text-align: center;">Emoções por Tempo</h1>
-  </div>
 
-  <div id="wrapperCanvas" style="position: relative; width: 80vw; top: 10px; left: 10vw; height: 50vh;"></div>
-    <canvas id="myChart" style="position: absolute;"></canvas>
-  </div>
-
-
-<script>
-
-$(function() {
-    $('#uploadInput').change(function() {
-      $('#upload-file-btn').removeAttr('disabled')
-      $('#upload-file-btn').removeClass('btnDisabled')
-      $('#upload-file-btn').addClass('bgRoxoPrimario')
-      $('#upload-file-btn').attr('style', 'color: black !important')
-    })
-    $('#upload-file-btn').click(function() {
-        var form_data = new FormData($('#upload-file')[0]);
-        $.ajax({
-            type: 'POST',
-            url: '/sendFile',
-            data: form_data,
-            contentType: false,
-            cache: false,
-            processData: false,
-            success: function(data) {
-            
-                $("#myChart").remove() 
-                $("#legenda").css('display', 'inline')
-                $("#wrapperCanvas").append("<canvas id=\"myChart\" style=\"position: absolute;\"></canvas>")
-                criarGrafico(data.results)
-            },
-        });
-    });
-});
-
-function criarGrafico(dados)
-{
-  labelsDados = []
-  for (var i = 0; i < dados.length; i++)
-    labelsDados.push(i)
-  var ctx = document.getElementById('myChart').getContext('2d');
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: labelsDados,
-      datasets: [{ 
-          data: dados,
-          label: 'Emoções',
-          steppedLine: 'before',
-          //lineTension: 0,
-          borderColor: "#BB86FC",
-          fill: false
-        }]
-    },
-    options: {
-      maintainAspectRatio: false,
-      scales: {
-        xAxes: [{ticks: {fontColor: 'white'},    gridLines: {
-        color: '#1F1F1F'
-      }}],
-        yAxes: [{ticks: {fontColor: 'white'}, 
-        afterTickToLabelConversion : function(q){
-          for(var tick in q.ticks){
-              q.ticks[tick] = '';
-          }
-          q.ticks[0] = 'Positivo';
-          q.ticks[5] = 'Neutro';
-          q.ticks[10] = 'Negativo';
-      }, 
-      gridLines: {
-        color: '#1F1F1F'
-      }
-      }]
-      },
-      legend: {
-        display: false,
-        fontColor: 'white'
-      }
-    }
-  });
-}
-
-
-/*var myLineChart = new Chart(ctx, {
-    type: 'line',
-    datasets: [{label: 'algumacoisapraversefunciona', data: [{
-        x: 0,
-        y: 0
-    }, {
-        x: 1,
-        y: 1
-    }, 
-    {
-        x: 2,
-        y: 1
-    },
-    {
-        x: 3,
-        y: 1
-    },
-    {
-        x: 4,
-        y: 0
-    },
-    {
-        x: 5,
-        y: -1
-    },
-    {
-        x: 6,
-        y: -1
-    },
-    {
-        x: 7,
-        y: 0
-    }],
-    options: {
-        scales: {
-            yAxes: [{
-                stacked: true
-            }]
-        }
-    }
-}]});*/
-
-</script>
+<script src="/static/js/testes.js"></script>
 {% endblock %}
