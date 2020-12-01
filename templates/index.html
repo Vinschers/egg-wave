@@ -26,7 +26,7 @@
             
             <h2>Envie dados de onde quiser, seja quem for!</h2>
             <p>Nosso objetivo é permitir que qualquer um possa fazer seus testes e participar do desenvolvimento das neurociências. Por isso, nossa plataforma possibilita que qualquer pessoa envie dados gratuitamente e, desde que as colunas estejam no padrão explicado na seção <a href="/testes"><b>inteligências artificiais</b></a>, nossos modelos podem classificá-los pelo tipo de emoção ou até mesmo nível de concentração! </p>
-            <p>Nossos algoritmos alcançaram uma precisão média de xx% em testes, e você pode utilizá-los em nosso <i>Web Service</i> ou baixá-los para execução em sua própria máquina.</p>
+            <p>Nossos algoritmos alcançaram uma precisão média de 95% em testes, e você pode utilizá-los em nosso <i>Web Service</i> ou baixá-los para execução em sua própria máquina.</p>
         
             <h2>Obtenha amostras de dados de EEG!</h2>
             <p>Sabemos o quão difícil é achar esse tipo de informação gratuitamente na internet. Por isso, na seção <a href="/bancos"><b>bancos de dados</b></a>, você tem acesso a 12 amostras diferentes de 6 voluntários para analisar como quiser. Todas elas estão classificadas em emoção positiva/negativa ou concentrado/relaxado dependendo do tipo de experimento, então sinta-se livre para treinar seus próprios modelos de inteligência artificial.</p>
@@ -43,16 +43,16 @@
             <ul>
                 <li>Por 4 minutos, ouviram músicas calmas para induzir <b>relaxamento</b>.</li>
                 <li>Tiveram 20 segundos de descanso.</li>
-                <li>Por 4 minutos, resolveram problemas matemáticos para indizir <b>concentração</b>.</li>
+                <li>Por 4 minutos, resolveram problemas matemáticos para induzir <b>concentração</b>.</li>
                 <li>Tiveram 20 segundos de descanso.</li>
             </ul>
             <p>Ao longo de todo o experimento, o eletroencefalógrafo mediu as ondas cerebrais, e posteriormente os dados foram classificados com 0 (relaxado) ou 1 (concentrado). Em seguida, treinamos um algoritmo de aprendizado supervisionado, Floresta Aleatória, utilizando dados de 5 voluntários. Por fim, testamos sua performance com os dados de um 6° voluntário, separando em trechos de 10 segundos.</p>
-            <p>É importante dizer que os modelos analisam registros individuais do EEG, mas decidimos testar a precisão da classificação mais provável em trechos completos de 10 segundos, pois em momentos específicos pequenas interferências ou variações naturais no cérebro podem atrapalhar os resultados.</p>
+            <p>É importante dizer que os modelos analisam registros individuais do EEG, mas decidimos testar a precisão da classificação mais provável em trechos completos de 1 segundo, pois em momentos específicos pequenas interferências ou variações naturais no cérebro podem atrapalhar os resultados.</p>
             <table>
                 <tbody>
                     <tr>
                         <td class="true"><b>xx</b> (Corretamente concentrado)</td>
-                        <td class="false"><b>xx</b> (Inorretamente concentrado)</td>
+                        <td class="false"><b>xx</b> (Incorretamente concentrado)</td>
                     </tr>
                     <tr>
                         <td class="false"><b>xx</b> (Incorretamente relaxado)</td>
@@ -60,7 +60,7 @@
                     </tr>
                 </tbody>
             </table>
-            <p>Precisão: xx%</p>
+            <p>Precisão: XX%</p>
             <p >Para fazer os modelos, tanto deste quanto do próximo experimento, utilizamos a ferramenta Jupyter e a biblioteca SciKitLearn.</p>
         </div>
 

@@ -62,13 +62,13 @@
     min-height: 395px;
 }
 #imgGraficoAcuracia {
-    background: url('/static/img/grafico.png') no-repeat;
+    background: url('/static/img/grafico2.png') no-repeat;
     background-size: 100%;
     position: relative;
     left: calc(-15px + 50%);
     transform: translateX(-50%);
     width: calc(32vw - 60px);
-    height: calc(0.9043 * (32vw - 60px));
+    height: calc(0.99 * (32vw - 60px));
     min-width: 400px;
     min-height: 395px;
 }
