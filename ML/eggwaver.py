@@ -31,7 +31,7 @@ class EggWaver:
         self.model.fit(train_x, train_y)
 
         #Getting the prediction
-        predict = model.predict(test_x)
+        predict = self.model.predict(test_x)
 
         return {'classification_report': classification_report(test_y, predict),
                 'confusion_matrix': confusion_matrix(test_y, predict)}
@@ -62,7 +62,8 @@ class EggWaver:
         #Getting expected results per chunk
         expected = []
 
-        for beg in range(0, len(true_y), chunk_size):
+        beg = 0
+        for beg in range(0, min(beg + chunk_size, len(true_y)), chunk_size):
             count = {}
 
             for point_index in range(beg, min(beg + chunk_size, len(true_y))):
@@ -80,7 +81,7 @@ class EggWaver:
                 'confusion_matrix': confusion_matrix(expected, pred_y)}
 
     def save_model(self, file_object):
-        #Does the model exists?
+        #Does the model exist?
         if self.model is None:
             raise Exception("Model not found")
 
